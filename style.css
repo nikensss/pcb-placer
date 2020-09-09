@@ -1,0 +1,108 @@
+.conf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pcb-view {
+  display: flex;
+}
+
+.pcb-view > * {
+  padding: 0.2em;
+}
+
+.pcb {
+  box-sizing: border-box;
+  background-color: #040;
+  box-shadow: 0.5mm 0.5mm 1mm black;
+}
+
+.part {
+  box-sizing: border-box;
+  background-color: white;
+  opacity: 0.1;
+}
+
+.smd {
+  box-sizing: border-box;
+  background-color: #db4;
+}
+
+.pad {
+  box-sizing: border-box;
+  border: 1px solid #db4;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0.5mm 0.5mm 1mm black inset;
+}
+
+.circle {
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 50%;
+  background: transparent;
+  z-index: 1;
+}
+
+.mirrored {
+  opacity: 0.5;
+}
+
+.part.mirrored {
+  opacity: 0.1;
+  border: 1px dotted white;
+  background-color: transparent;
+}
+
+.circle.mirrored {
+  opacity: 0.1;
+  border: 1px dotted white;
+}
+
+html {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+table {
+  border: 1px solid black;
+}
+
+td {
+  background-color: #eee;
+  vertical-align: top;
+}
+
+.numeric {
+  text-align: right;
+}
+
+th {
+  background-color: #ddd;
+}
+
+.hilite > td {
+  background-color: transparent;
+}
+
+.hilite {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
