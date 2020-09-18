@@ -1,12 +1,31 @@
 .conf {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1;
+}
+
+.label {
+  text-align: right;
+  padding-right: 0.2rem;
+  line-height: 100%;
+}
+
+.filename-display {
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 .pcb-view {
   display: flex;
+  margin-top: 1.2em;
+  width: 100%;
 }
 
 .pcb-view > * {
@@ -61,6 +80,84 @@
   border: 1px dotted white;
 }
 
+.flip-board {
+  text-align: center;
+  width: 100%;
+  padding-top: 1.2em;
+  position: sticky;
+}
+
+.flip-board::before {
+  content: 'Top';
+  top: 0.5rem;
+  position: relative;
+}
+
+.flip-board::after {
+  content: 'Bottom';
+  top: 0.5rem;
+  position: relative;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(201, 13, 12);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(6, 150, 215);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(6, 150, 215);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 html {
   font-family: sans-serif;
   margin: 0;
@@ -74,6 +171,11 @@ a {
 }
 
 table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table * {
   border: 1px solid black;
 }
 

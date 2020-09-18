@@ -21,26 +21,54 @@
   </head>
 
   <body>
+    <!-- File selection (configuration) -->
     <div class="conf">
-      <label for="board">Select a .brd file:</label>
+      <label
+        class="label"
+        for="board"
+      >Select a .brd file:</label>
       <input
         type="file"
         id="xmlfile"
         name="board"
+        class="file-input"
       >
-      <p id="filename-display"></p>
+      <p
+        class="filename-display"
+        id="filename-display"
+      ></p>
     </div>
+    <!-- End file selection (configuration) -->
+
+    <!-- Start PCB view (ie: PCB + flip switch + table) -->
     <div class="pcb-view hide">
-      <div>
+      <!-- Start PCB + flip switch -->
+      <div class="w-4">
         <div
           id="pcb"
           class="pcb"
           style="position: sticky;"
         >
-
         </div>
+        <!-- Start flip switch -->
+        <div
+          class="flip-board"
+          id="flip-board"
+        >
+          <label class="switch">
+            <input
+              type="checkbox"
+              id="flip"
+            >
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <!-- End flip switch -->
       </div>
-      <div>
+      <!-- End PCB + flip switch -->
+
+      <!-- Start parts list table -->
+      <div class="w-8">
         <table id="partslist">
           <thead>
             <tr>
@@ -55,7 +83,10 @@
           </thead>
         </table>
       </div>
+      <!-- End parts list table -->
     </div>
+    <!-- End PCB view (ie: PCB + flip switch + table) -->
+
     <p><a href="http://makr.zone">&copy; makr.zone</a></p>
 
   </body>

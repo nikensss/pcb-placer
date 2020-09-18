@@ -101,16 +101,33 @@ function displayBoard(data) {
     alert('Board dimensions error');
   }
   pcb.css('left', bx0.toString() + 'mm');
-  pcb.css('top', by0.toString() + 'mm');
+  pcb.css('top', (by0 + 2).toString() + 'mm');
+  // pcb.css('margin-top', '2mm');
 
-  pcb.css('width', (bx1 - bx0).toString() + 'mm');
-  pcb.css('height', (by1 - by0).toString() + 'mm');
+  const width = bx1 - bx0;
+  const height = by1 - by0;
+  const ratio = width / height;
 
-  partslist.css('margin-top', '2mm');
+  const finalWidth = parseFloat($('.w-4').css('width'));
+  const finalHeight = Math.ceil(finalWidth / ratio);
+
+  // pcb.css('width', finalWidth.toString() + 'px');
+  // pcb.css('height', finalHeight.toString() + 'px');
+  pcb.css('width', width + 'mm');
+  pcb.css('height', height + 'mm');
+
+  $('#flip-board').css(
+    'top',
+    parseInt(pcb.css('height')) +
+      parseInt($('#flip-board').css('height')) +
+      'px'
+  );
+
   $(data)
     .find('element')
     .each(function (index) {
       const element = this;
+      console.log({ element });
       const name = $(element).attr('name');
       const rot = $(element).attr('rot');
       var mirrored = rot != null && rot.substring(0, 1) == 'M';
@@ -406,7 +423,7 @@ $(document).ready(function () {
 
     const filename = inputFiles[0].name;
 
-    $('#filenameDisplay').text(`Viewing: ${filename}`);
+    $('#filename-display').text(`Viewing: ${filename}`);
 
     const fr = new FileReader();
 
@@ -416,4 +433,9 @@ $(document).ready(function () {
 
     fr.readAsText(inputFiles[0]);
   });
+
+  $.ajax({
+    url: 'board.brd',
+    dataType: 'xml'
+  }).done(displayBoard);
 });
